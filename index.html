@@ -1,57 +1,220 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta name="google-site-verification" content="sEhonvvSCmDC5pAAwvDp_nwLo1l2TcTXQdLjMwUQI08" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Austin Dao | Portfolio</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0f172a;
-      color: #e2e8f0;
-      text-align: center;
-      margin: 0;
-      padding: 2em;
-    }
-    h1 {
-      font-size: 2.8em;
-      margin-bottom: 0.5em;
-    }
-    p {
-      font-size: 1.2em;
-      margin-bottom: 1.5em;
-    }
-    a {
-      color: #38bdf8;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-    }
-    footer {
-      margin-top: 3em;
-      font-size: 0.9em;
-      color: #94a3b8;
-    }
-  </style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Austin_Dao</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700|Playfair+Display:400,700,900" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/main.css">
+
 </head>
+
 <body>
-  <div class="container">
-    <h1>👋 Welcome to austindao.dev</h1>
-    <p>This is my personal website powered by <strong>GitHub Pages</strong> and my custom domain <code>austindao.dev</code>.</p>
+    <!--Navbar -->
 
-    <p>📬 Contact: <a href="mailto:austindao90_1213@berkeley.edu">austindao90_1213@berkeley.edu</a></p>
-    <p>🔗 GitHub: <a href="https://github.com/Dao1213" target="_blank">Dao1213</a></p>
-    <p>🚧 More content coming soon!</p>
+    <nav class="navbar navbar-expand-lg navbar-dark cyan fixed-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Bookshelf.html">Bookshelf </a></li>
+                    <li class="nav-item"><a class="nav-link" href="Youtube/Leaklink.html">Leaklink</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="contact.html">contact <span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--/.Navbar -->
 
-    <footer>
-      &copy; 2025 Austin Dao. All rights reserved.
-    </footer>
-  </div>
+    
+<!--Carousel Wrapper-->
+<div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
+  <!-- Slides will be injected here -->
+  <div class="carousel-inner" id="book-carousel-inner"></div>
+  <!-- Indicators will be injected here -->
+  <ol class="carousel-indicators" id="book-carousel-indicators"></ol>
+</div>
+
+<script>
+  // Example: List your .jpg filenames here
+  const bookImages = [
+    "books/Immune.jpg",
+    "books/immune1.jpg",
+    "books/immune2.jpg",
+    "books/immune3.jpg",
+    "books/immune4.jpg",
+    "books/immune5.jpg",
+    "books/immune6.jpg",
+    "books/immune7.jpg",
+    "books/immune8.jpg",
+    "books/immune9.jpg",
+    "books/immune10.jpg",
+    "books/LeonardoDavinci1.jpg",
+    "books/LeonardoDavinci2.jpg",
+    "books/LeonardoDavinci3.jpg",
+    "books/LeonardoDavinci4.jpg",
+    "books/LeonardoDavinci5.jpg",
+    "books/LeonardoDavinci6.jpg",
+    "books/LeonardoDavinci7.jpg",
+    "books/LeonardoDavinci8.jpg",
+    "books/LeonardoDavinci9.jpg",
+    "books/LeonardoDavinci10.jpg",
+    "books/LeonardoDavinci11.jpg"
+    // Add more as needed, or generate this list server-side if you can!
+  ];
+
+  const carouselInner = document.getElementById("book-carousel-inner");
+  const carouselIndicators = document.getElementById("book-carousel-indicators");
+
+  bookImages.forEach((src, idx) => {
+    // Slides
+    const item = document.createElement("div");
+    item.className = "carousel-item" + (idx === 0 ? " active" : "");
+    item.innerHTML = `
+      <img class="d-block w-100" src="${src}" alt="Book cover ${idx+1}">
+      <div class="gradient"></div>
+      <div class="carousel-caption">
+      </div>
+    `;
+    carouselInner.appendChild(item);
+
+    // Indicators
+    const li = document.createElement("li");
+    li.setAttribute("data-target", "#carousel-thumb");
+    li.setAttribute("data-slide-to", idx);
+    if(idx === 0) li.className = "active";
+    li.innerHTML = `<img class="d-block w-100" src="${src}" class="img-fluid">`;
+    carouselIndicators.appendChild(li);
+  });
+</script>
+    <!--/.Carousel Wrapper-->
+
+    <!-- Page Content -->
+
+    <section class="blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 left-side">
+                    <h2>My favorite Books</h2>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <figure class="figure">
+                                <a href="books/WhyWeSleep.html"><img src="books/WhyWeSleep.jpg" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure."></a>
+                            </figure>
+                        </div>
+                        <div class="col-md-6">
+                            <h4><a href="books/WhyWeSleep.html">Why do we spend nearly a third of our lives asleep? Have you ever wondered why evolution hasn’t eliminated sleep?</a></h4>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <figure class="figure">
+                                <a href="books/ThePowerOfNow.html"><img src="books/ThePowerOfNow.jpg" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure."></a>
+                            </figure>
+                        </div>
+                        <div class="col-md-6">
+                            <h4><a href="books/ThePowerOfNow.html">Have you ever noticed how your mind keeps dragging you into the past or future, even though life only ever happens in the present? What if your thoughts are just tools—not your whole identity?</a></h4>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <figure class="figure">
+                                <a href="books/Immune.html"><img src="books/Immune.jpg" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure."></a>
+                            </figure>
+                        </div>
+                        <div class="col-md-6">
+                            <h4><a href="books/Immune.html">Why do some people get sick all the time, while others never seem to catch anything? Is it just luck?</a></h4>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <figure class="figure">
+                                <a href="books/AtomicHabits.html"><img src="books/AtomicHabits.jpg" class="figure-img img-fluid" alt="A generic square placeholder image with rounded corners in a figure."></a>
+                            </figure>
+                        </div>
+                        <div class="col-md-6">
+                            <h4><a href="books/AtomicHabits.html">Forget overnight success—what if the real secret is just getting 1% better, again and again? See how small habits create massive results.</a></h4>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="right-side">
+                                <h3>Whos Me ?</h3>
+                                <figure>
+                                    <img src="images/banner-image-2.jpg" alt="">
+                                </figure>
+                                <h5>Welcome to my personal blog, This is where I share my current projects, book reviews, and connect with people from around the world...</h5>
+
+                                <address>
+                               <span>Email : austindao90_1213@berkeley.edu</span>
+                           </address>
+                                <h2>Quick Contact</h2>
+                                <form id="contact" method="post" class="form" role="form">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-md-6 form-group">
+                                            <input class="form-control" id="name" name="name" placeholder="Name" type="text" required/>
+                                        </div>
+                                        <div class="col-xs-6 col-md-6 form-group">
+                                            <input class="form-control" id="email" name="email" placeholder="Email" type="email" required />
+                                        </div>
+                                    </div>
+                                    <textarea class="form-control" id="message" name="message" placeholder="Message" rows="5"></textarea>
+                                    <br />
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-12 form-group">
+                                            <button class="btn btn-primary" type="submit">Alright Submit it</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Return to Top -->
+    <a href="javascript:" id="return-to-top"><i class="fa fa-long-arrow-up" aria-hidden="true"></i></a>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/animate.js"></script>
+    <script src="js/custom.js"></script>
+    <script>
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });
+    </script>
 </body>
+
 </html>
